@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Form</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html, body {
+      height: 100%;
+      width: 100%;
+      overflow: hidden;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #000428, #004e92);
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .container {
+      background-attachment: scroll;
+      width: 400px;
+      max-width: 90%;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      border: 2px solid #00f0ff;
+      border-radius: 15px;
+      padding: 30px;
+      box-shadow: 0 8px 32px rgba(31, 38, 135, 0.37);
+      min-height: max-content; /* Fixed height to prevent shrinking */
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+    }
+
+    h1 {
+      z-index: 5;
+      text-align: center;
+      color: #00f0ff;
+      margin-bottom: 20px;
+      font-size: 2em;
+      text-shadow: 0 0 10px #00f0ff;
+    }
+
+    form {
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    label {
+      margin-bottom: 6px;
+      color: #ffffff;
+      font-weight: bold;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 16px;
+      border: 1px solid #00f0ff;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.2);
+      color: #fff;
+      font-size: 16px;
+      resize: none;
+      outline: none;
+    }
+
+    input::placeholder, textarea::placeholder {
+      color: #ccc;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      background: linear-gradient(to right, #6a11cb, #2575fc);
+      border: none;
+      border-radius: 8px;
+      color: white;
+      font-size: 18px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s ease;
+      margin-top: 10px;
+    }
+
+    button:hover {
+      background: linear-gradient(to right, #2575fc, #6a11cb);
+    }
+
+    .message {
+      text-align: center;
+      margin-top: 15px;
+      color: #4CAF50;
+      font-weight: bold;
+      opacity: 0;
+      transition: opacity 0.5s ease;
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100%;
+    }
+
+    .message.show {
+      opacity: 1;
+    }
+
+    a.back-button {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: #ff4b2b;
+      padding: 10px 15px;
+      border-radius: 10px;
+      text-decoration: none;
+      color: white;
+      font-weight: bold;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      transition: background 0.3s ease;
+      z-index: 10;
+    }
+
+    a.back-button:hover {
+      background: #ff416c;
+    }
+  </style>
+</head>
+<body>
+
+<a class="back-button" href="https://l2hanime-pic.tiiny.site">Back</a>
+
+<div class="container">
+  <h1>Contact Us</h1>
+  <form id="contact-form" action="https://formspree.io/f/myzwzvqe" method="POST">
+    <label for="name">Your Name:</label>
+    <input type="text" id="name" name="name" placeholder="Enter your name" required>
+
+    <label for="email">Your Email:</label>
+    <input type="email" id="email" name="email" placeholder="Enter your email" required>
+
+    <label for="message">Your Message:</label>
+    <textarea id="message" name="message" rows="5" placeholder="Write your message..." required></textarea>
+
+    <button type="submit">Send Message</button>
+  </form>
+
+  <div id="message-sent" class="message">Your message has been sent successfully!</div>
+</div>
+
+<script>
+  document.getElementById('contact-form').addEventListener('submit', function(event) {
+    event.preventDefault(); // prevent default
+
+    const form = event.target;
+
+    fetch(form.action, {
+      method: form.method,
+      body: new FormData(form),
+      headers: {
+        'Accept': 'application/json'
+      }
+    }).then(response => {
+      if (response.ok) {
+        const messageSent = document.getElementById('message-sent');
+        messageSent.classList.add('show');
+        form.reset();
+      } else {
+        alert('Failed to send message.');
+      }
+    }).catch(error => {
+      alert('Error sending message.');
+    });
+  });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About L2H Anime Gallery</title>
+  <!-- Styles and fonts stay same -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* Same base styles */
+    body { font-family: 'Poppins', sans-serif; margin:0; background: linear-gradient(135deg, #070B1B, #1C2853); color: #e0e0ff; }
+    header, footer { background: #0E1538; padding: 20px; text-align: center; }
+    .logo-text { font-size: 24px; font-weight: bold; }
+    nav ul { list-style: none; padding: 0; display: flex; flex-wrap: nowrap; justify-content: center; }
+    nav ul li { margin: 10px; }
+    nav ul li a { color: #e0e0ff; text-decoration: none; font-weight: 500; }
+    .main-content { padding: 20px; max-width: 1000px; margin: auto; }
+    h1 { font-size: 2em; margin-bottom: 10px; text-align: center; }
+    .tagline { text-align: center; font-size: 1.1em; margin-bottom: 40px; color: #a2c0ff; }
+    .about-grid { display: grid; gap: 20px; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+    .about-card { background: rgba(18,26,64,0.7); padding: 20px; border-radius: 12px; }
+    .about-card h2 { margin-bottom: 15px; }
+    .about-card p { color: #c9d1e9; }
+    .cta-section { text-align: center; margin: 50px 0; background: rgba(18,26,64,0.8); padding: 30px; border-radius: 12px; }
+    .cta-section h2 { font-size: 1.8em; margin-bottom: 15px; }
+    .cta-section p { margin-bottom: 20px; color: #c9d1e9; }
+    .button { background: linear-gradient(45deg, #FFC859, #FFFAC8); color: #0E1538; padding: 10px 25px; border-radius: 50px; text-decoration: none; font-weight: bold; }
+    .faq-section { margin: 50px 0; }
+    .faq-item { background: rgba(18,26,64,0.7); margin-bottom: 15px; padding: 15px; border-radius: 8px; }
+    .faq-question { font-weight: bold; cursor: pointer; display: flex; justify-content: space-between; }
+    .faq-answer { display: none; padding-top: 10px; color: #c9d1e9; }
+    .faq-answer.active { display: block; }
+    footer p { color: #a2c0ff; font-size: 14px; margin-top: 20px; }
+    @media (max-width:600px) {
+      nav ul { flex-direction: column; }
+      nav ul li { margin: 5px 0; }
+      h1 { font-size: 1.8em; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo-text">L2H <span style="color: #FFC859;">ANIME</span> GALLERY</div>
+    <nav>
+      <ul>
+        <li><a href="Home.html"><span style="color: blue;">Home</span></a></li>
+        <li><a href="https://l2hanime-pic.tiiny.site"><span style="color: yellow;">Gallery</span></a></li>
+        <li><a href="Contact.html"><span style="color: red;">Contact</span></a></li>
+      </ul>
+    </nav>
+  </header>  <div class="main-content">
+    <div class="hero-section">
+      <h1>About <span style="color: #FFC859;">L2H Anime Gallery</span></h1>
+      <p class="tagline">Your Premium Destination for High-Quality Anime Artwork and Wallpapers</p>
+    </div><div class="about-grid">
+  <div class="about-card">
+    <h2>Our Mission</h2>
+    <p>L2H Anime Gallery was created to provide anime enthusiasts with the highest quality collection of anime artwork and wallpapers in one elegant, premium platform.</p>
+  </div>
+
+  <div class="about-card">
+    <h2>Our Collection</h2>
+    <p>Only high-resolution, professionally curated images, covering popular series and niche favorites, updated weekly!</p>
+  </div>
+
+  <div class="about-card">
+    <h2>Why Choose Us</h2>
+    <p>We offer a premium, ad-free experience with stunning, carefully selected anime art — because true fans deserve the best.</p>
+  </div>
+</div>
+
+<div class="cta-section">
+  <h2>Join Our <span style="color: #FFC859;">Premium Collection</span></h2>
+  <p>Unlock access to exclusive wallpapers, early releases, and special collections.</p>
+  <a href="https://t.me/+3Bmi_FlM9dFjN2Q1" class="button">Explore Premium</a>
+</div>
+
+<div class="faq-section">
+  <h2 style="text-align:center; margin-bottom:20px;">Frequently Asked Questions</h2>
+  <div class="faq-item">
+    <div class="faq-question">How often do you update your collection?<span>+</span></div>
+    <div class="faq-answer">We add new artwork every week, usually on Fridays.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-question">Can I request specific anime characters?<span>+</span></div>
+    <div class="faq-answer">Premium members can submit requests for specific characters or series!</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-question">What resolutions are available?<span>+</span></div>
+    <div class="faq-answer">All images are at least Full HD; Premium users get 4K and ultrawide options.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-question">Are the images free to use?<span>+</span></div>
+    <div class="faq-answer">They are free for personal use, but not for commercial purposes.</div>
+  </div>
+</div>
+
+  </div>  <footer>
+    <p>&copy; 2025 L2H Anime Gallery. All Rights Reserved.</p>
+  </footer>  <script>
+    const faqs = document.querySelectorAll('.faq-question');
+    faqs.forEach(faq => {
+      faq.addEventListener('click', () => {
+        faq.nextElementSibling.classList.toggle('active');
+      });
+    });
+  </script></body>
+</html>
