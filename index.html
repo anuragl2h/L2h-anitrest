@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>🎙️ Anime Stories</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(135deg, #0c0c0c, #1a1a2e, #16213e);
+      color: #fff;
+      min-height: 100vh;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at 20% 80%, rgba(120,119,198,0.3) 0%, transparent 50%),
+                  radial-gradient(circle at 80% 20%, rgba(255,117,140,0.3) 0%, transparent 50%);
+      z-index: -1;
+      animation: bgmove 10s ease-in-out infinite alternate;
+      will-change: background-position;
+    }
+
+    @keyframes bgmove {
+      0% { background-position: 0 0; }
+      100% { background-position: 10px 10px; }
+    }
+
+    header {
+      background: rgba(255,255,255,0.05);
+      backdrop-filter: blur(10px);
+      margin: 1rem;
+      padding: 1rem 2rem;
+      border-radius: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+      z-index: 99;
+      position: relative;
+    }
+
+    .logo {
+      width: 60px;
+      height: 60px;
+      border-radius: 12px;
+      left: 0px;
+    }
+
+
+
+    .hamburger {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      cursor: pointer;
+      padding: 8px;
+      border-radius: 8px;
+      z-index: 30;
+    }
+
+    .line {
+      width: 25px;
+      height: 3px;
+      background: linear-gradient(90deg, #ff758c, #ff7eb3);
+      border-radius: 2px;
+      transition: all 0.3s ease;
+    }
+
+    .hamburger.active .line:nth-child(1) {
+      transform: rotate(45deg) translate(5px, 5px);
+    }
+    .hamburger.active .line:nth-child(2) {
+      opacity: 0;
+    }
+    .hamburger.active .line:nth-child(3) {
+      transform: rotate(-45deg) translate(5px, -5px);
+    }
+
+    .menu {
+      position: absolute;
+      top: 100%;
+      right: 0;
+      background: rgba(30, 30, 30, 0.95);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 12px;
+      min-width: 200px;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-10px);
+      transition: all 0.3s ease;
+      z-index: 50;
+    }
+
+    .menu.active {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .menu ul {
+      list-style: none;
+      padding: 0.5rem 0;
+    }
+
+    .menu li a {
+      color: #fff;
+      text-decoration: none;
+      padding: 0.8rem 1rem;
+      display: block;
+    }
+
+    .main-title {
+      text-align: center;
+      font-size: 2.5rem;
+      margin: 2rem 0;
+      font-weight: 700;
+      background: linear-gradient(135deg, #667eea, #764ba2, #ff758c);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    #storyContainer {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+      padding: 0 1rem 2rem;
+      max-width: 1200px;
+      margin: auto;
+      z-index: 1;
+    }
+
+    .story {
+      background: rgba(255,255,255,0.05);
+      backdrop-filter: blur(10px);
+      border-radius: 15px;
+      padding: 1rem;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+      will-change: transform;
+    }
+
+    .controls {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      margin-top: 1rem;
+    }
+
+    .story button {
+      padding: 0.6rem 1.2rem;
+      border: none;
+      border-radius: 8px;
+      color: #fff;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .play-btn {
+      background: linear-gradient(135deg, #11998e, #38ef7d);
+    }
+
+    .stop-btn {
+      background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+    }
+
+    body.scrolling * {
+      transition: none !important;
+      animation-play-state: paused !important;
+    }
+
+    @media(max-width:768px){
+      .main-title { font-size: 2rem; }
+    }
+    .logo-section {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem; /* space between logo and brand text */
+}
+
+.brand-text {
+  font-size: 1.5rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, #ff758c, #ff7eb3, #78c6a0);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo-section">
+      <img src="https://i.postimg.cc/hP5Stk2p/file-00000000f4e461f78100a436fba7c642-conversation-id-680ded85-bc58-8006-b9d3-3b69497d5863-message-i.webp" class="logo" alt="logo">
+      <div class="brand-text">L2H Animetrest</div>
+    </div>
+    <div class="hamburger" onclick="toggleMenu()">
+      <div class="line"></div>
+      <div class="line"></div>
+      <div class="line"></div>
+    </div>
+    <nav class="menu">
+      <ul>
+        <li><a href="#">🏠 Home</a></li>
+        <li><a href="#">👤 Account</a></li>
+        <li><a href="#">ℹ️ About</a></li>
+        <li><a href="#">📞 Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <h1 class="main-title">🎌 Anime Story Listener</h1>
+  <div id="storyContainer" class="loading">Loading amazing stories...</div>
+
+  <script>
+    function toggleMenu() {
+      document.querySelector('.menu').classList.toggle('active');
+      document.querySelector('.hamburger').classList.toggle('active');
+    }
+
+    let scrollTimer;
+    window.addEventListener('scroll', () => {
+      document.body.classList.add('scrolling');
+      clearTimeout(scrollTimer);
+      scrollTimer = setTimeout(() => {
+        document.body.classList.remove('scrolling');
+      }, 100);
+    });
+
+    // Example fetch stories
+    fetch("https://opensheet.elk.sh/1FRWiHzIKnap2iJIoMBplYLuNofAPR20A3qKCwXvYSyo/Sheet1")
+      .then(res => res.json())
+      .then(data => {
+        const container = document.getElementById("storyContainer");
+        container.innerHTML = '';
+        data.forEach((item, index) => {
+          const div = document.createElement('div');
+          div.className = 'story';
+          div.innerHTML = `<h2>${item.Title || 'Untitled'}</h2>
+                           <p>${item.Preview || 'No preview available'}</p>
+                           <div class="controls">
+                             <button class="play-btn" onclick="speak(\`${item.Story || ''}\`)">▶️ Play</button>
+                             <button class="stop-btn" onclick="stopSpeech()">⏹️ Stop</button>
+                           </div>`;
+          container.appendChild(div);
+        });
+      })
+      .catch(() => {
+        document.getElementById("storyContainer").innerHTML = "<div style='color:red;text-align:center;'>❌ Failed to load stories.</div>";
+      });
+
+    let currentUtterance = null;
+    function speak(text) {
+      stopSpeech();
+      currentUtterance = new SpeechSynthesisUtterance(text);
+      currentUtterance.lang = 'hi';
+      speechSynthesis.speak(currentUtterance);
+    }
+    function stopSpeech() {
+      speechSynthesis.cancel();
+    }
+  </script>
+</body>
+</html>
